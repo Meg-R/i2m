@@ -4,6 +4,8 @@ This folder is a complete static website for the Intelligent Immersion in the
 Metaverse ACM Virtual Chapter. It uses only HTML, CSS, and JavaScript, so it can
 be published directly with GitHub Pages.
 
+Link here: https://meg-r.github.io/i2m/
+
 ## Structure
 
 ```text
