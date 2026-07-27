@@ -1,10 +1,10 @@
 # I²M GitHub Pages website
 
-This folder is a complete static website for the Intelligent Immersion in the
-Metaverse ACM Virtual Chapter. It uses only HTML, CSS, and JavaScript, so it can
-be published directly with GitHub Pages.
-
-Link here: https://meg-r.github.io/i2m/
+This folder is a complete static website for the Intelligence, Immersion &
+Media ACM Virtual Chapter. It preserves the original Intelligent
+Immersification in the Metaverse story in the Background section and includes a
+chronological archive of the chapter's past events. It uses only HTML, CSS, and
+JavaScript, so it can be published directly with GitHub Pages.
 
 ## Structure
 
