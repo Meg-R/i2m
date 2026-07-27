@@ -283,22 +283,108 @@ body:hover .cursor-glow {
 }
 
 .hero h1 {
-  max-width: 12ch;
+  max-width: 15ch;
   margin: 0;
-  font-size: clamp(3.5rem, 8.6vw, 9rem);
+  font-size: clamp(3.25rem, 7.7vw, 8.2rem);
   font-weight: 300;
-  line-height: 0.91;
-  letter-spacing: -0.065em;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
 }
 
-.hero h1 span {
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(245, 247, 255, 0.78);
+.hero-acronym {
+  display: block;
+  margin-bottom: 0.16em;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.5em;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  text-transform: lowercase;
+  text-shadow: 0 0 28px rgba(85, 230, 255, 0.22);
+}
+
+.hero-acronym sup {
+  position: relative;
+  top: -0.48em;
+  margin: 0 0.08em;
+  font-size: 0.48em;
+}
+
+.hero-expansion {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.18em;
+  color: var(--white);
+}
+
+.hero-expansion > span {
+  white-space: nowrap;
+}
+
+.hero-expansion i {
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.62em;
+  font-style: normal;
+  font-weight: 400;
+  text-shadow: 0 0 22px rgba(85, 230, 255, 0.28);
+}
+
+.hero-proof {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.8rem;
+  max-width: 980px;
+  margin-top: 2rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid rgba(85, 230, 255, 0.28);
+  background: rgba(85, 230, 255, 0.045);
+  font-size: clamp(0.9rem, 1.25vw, 1.15rem);
+  transition:
+    border-color 0.25s,
+    background 0.25s;
+}
+
+.hero-proof:hover,
+.hero-proof:focus-visible {
+  border-color: rgba(85, 230, 255, 0.7);
+  background: rgba(85, 230, 255, 0.075);
+}
+
+.hero-proof > span {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.64em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-proof strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.hero-proof i {
+  color: var(--cyan);
+  font-style: normal;
+}
+
+.hero-proof b {
+  margin-left: auto;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.58em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .hero-copy {
   max-width: 610px;
-  margin: 2.2rem 0 0;
+  margin: 1.35rem 0 0;
   color: #bac1d1;
   font-size: clamp(1rem, 1.35vw, 1.25rem);
   font-weight: 300;
@@ -1353,6 +1439,19 @@ body:hover .cursor-glow {
   text-align: right;
 }
 
+.person.is-vacant h3 {
+  color: #798297;
+  font-family: var(--font-mono);
+  font-size: clamp(0.9rem, 1.4vw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.person.is-vacant .person-role {
+  color: var(--muted);
+}
+
 .charter-section {
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -1684,6 +1783,23 @@ body:hover .cursor-glow {
 
   .hero h1 {
     font-size: clamp(3.25rem, 16vw, 5.2rem);
+  }
+
+  .hero-proof {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+  }
+
+  .hero-proof i {
+    display: none;
+  }
+
+  .hero-proof b {
+    margin-top: 0.45rem;
+    margin-left: 0;
   }
 
   .hero-actions {
