@@ -271,10 +271,15 @@ body:hover .cursor-glow {
   margin: 0 0 1.2rem;
   color: var(--cyan);
   font-family: var(--font-mono);
-  font-size: clamp(0.65rem, 0.9vw, 0.78rem);
-  font-weight: 400;
-  letter-spacing: 0.12em;
+  font-size: clamp(0.76rem, 1vw, 0.94rem);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.105em;
   text-transform: uppercase;
+}
+
+.section-index {
+  text-shadow: 0 0 18px rgba(85, 230, 255, 0.2);
 }
 
 .hero h1 {
@@ -512,7 +517,8 @@ body:hover .cursor-glow {
   margin-bottom: 1rem;
   color: var(--cyan);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: 0.7rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -532,6 +538,93 @@ body:hover .cursor-glow {
 .origin-card .text-link {
   display: inline-flex;
   margin-top: 0.5rem;
+}
+
+.inauguration-milestone {
+  position: relative;
+  align-self: start;
+  min-height: 520px;
+  padding: clamp(2rem, 4vw, 4rem);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(145deg, rgba(85, 230, 255, 0.1), transparent 45%),
+    radial-gradient(circle at 92% 12%, rgba(156, 115, 255, 0.12), transparent 18rem),
+    var(--ink-soft);
+}
+
+.inauguration-milestone::before,
+.inauguration-milestone::after {
+  position: absolute;
+  border: 1px solid rgba(85, 230, 255, 0.18);
+  border-radius: 50%;
+  content: "";
+}
+
+.inauguration-milestone::before {
+  top: -90px;
+  right: -80px;
+  width: 310px;
+  height: 310px;
+}
+
+.inauguration-milestone::after {
+  top: -20px;
+  right: -10px;
+  width: 170px;
+  height: 170px;
+}
+
+.milestone-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+.milestone-topline span {
+  color: var(--cyan);
+  font-size: 1.2rem;
+}
+
+.milestone-topline small {
+  color: var(--muted);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+}
+
+.milestone-label {
+  margin: clamp(3rem, 7vw, 6rem) 0 0.9rem;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.inauguration-milestone h3 {
+  max-width: 10ch;
+  margin: 0 0 1.5rem;
+  font-size: clamp(2.5rem, 4.8vw, 5rem);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.inauguration-milestone > p:not(.milestone-label) {
+  max-width: 650px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.inauguration-milestone .text-link {
+  display: inline-flex;
+  margin-top: 1rem;
 }
 
 .timeline {
@@ -830,6 +923,8 @@ body:hover .cursor-glow {
 }
 
 .dimension-stage {
+  --stage-x: 0px;
+  --stage-y: 0px;
   display: grid;
   min-height: 650px;
   padding: 3rem;
@@ -846,13 +941,17 @@ body:hover .cursor-glow {
   aspect-ratio: 1;
   margin: 0 auto;
   align-self: start;
-  transform: perspective(900px) rotateX(58deg) rotateZ(-25deg);
+  transform:
+    translate3d(var(--stage-x), var(--stage-y), 0)
+    perspective(900px) rotateX(58deg) rotateZ(-25deg);
   transform-style: preserve-3d;
   transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .dimension-stage[data-mode="z"] .dimension-visual {
-  transform: perspective(900px) rotateX(63deg) rotateZ(-42deg) translateZ(30px);
+  transform:
+    translate3d(var(--stage-x), var(--stage-y), 0)
+    perspective(900px) rotateX(63deg) rotateZ(-42deg) translateZ(30px);
 }
 
 .plane {
@@ -883,7 +982,17 @@ body:hover .cursor-glow {
 
 .dimension-stage[data-mode="z"] .plane-y,
 .dimension-stage[data-mode="z"] .plane-z {
-  opacity: 0.45;
+  opacity: 0.78;
+}
+
+.dimension-stage[data-mode="z"] .plane {
+  border: 2px solid rgba(85, 230, 255, 0.66);
+  background-image:
+    linear-gradient(rgba(85, 230, 255, 0.34) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(85, 230, 255, 0.34) 1px, transparent 1px);
+  box-shadow:
+    inset 0 0 35px rgba(85, 230, 255, 0.07),
+    0 0 26px rgba(85, 230, 255, 0.1);
 }
 
 .dimension-node {
@@ -894,6 +1003,10 @@ body:hover .cursor-glow {
   background: var(--cyan);
   box-shadow: 0 0 18px var(--cyan);
   transform: translateZ(12px);
+  transition:
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    width 0.35s,
+    height 0.35s;
 }
 
 .node-a { top: 18%; left: 25%; }
@@ -905,6 +1018,12 @@ body:hover .cursor-glow {
 .dimension-stage[data-mode="z"] .node-b { transform: translateZ(55px); }
 .dimension-stage[data-mode="z"] .node-c { transform: translateZ(150px); }
 .dimension-stage[data-mode="z"] .node-d { transform: translateZ(85px); }
+
+.dimension-stage[data-mode="z"] .dimension-node {
+  width: 12px;
+  height: 12px;
+  animation: node-pulse 2.4s ease-in-out infinite;
+}
 
 .dimension-panel {
   z-index: 2;
@@ -951,9 +1070,35 @@ body:hover .cursor-glow {
   padding: 0.4rem 0.7rem;
   border: 1px solid var(--line);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: 0.64rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+.program-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(85, 230, 255, 0.55);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition:
+    color 0.25s,
+    border-color 0.25s,
+    gap 0.25s;
+}
+
+.program-action:hover,
+.program-action:focus-visible {
+  gap: 1rem;
+  border-color: var(--lime);
+  color: var(--lime);
 }
 
 .events-section {
@@ -1102,9 +1247,18 @@ body:hover .cursor-glow {
   margin: 0 0 0.65rem;
   color: var(--cyan);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
+  font-size: clamp(0.76rem, 1.05vw, 0.94rem);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.065em;
   text-transform: uppercase;
+  text-shadow: 0 0 16px rgba(85, 230, 255, 0.16);
+}
+
+.event-type strong {
+  color: var(--cyan);
+  font-size: 1.08em;
+  font-weight: 700;
 }
 
 .event-body h3 {
@@ -1133,7 +1287,8 @@ body:hover .cursor-glow {
 .event-links a {
   color: var(--white);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: color 0.25s;
@@ -1276,7 +1431,8 @@ body:hover .cursor-glow {
 .text-link {
   color: var(--cyan);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.74rem;
+  font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -1411,6 +1567,11 @@ body:hover .cursor-glow {
 @keyframes breathe {
   0%, 100% { opacity: 0.65; transform: rotate(-8deg) scale(0.9); }
   50% { opacity: 1; transform: rotate(-8deg) scale(1.06); }
+}
+
+@keyframes node-pulse {
+  0%, 100% { filter: brightness(0.9); }
+  50% { filter: brightness(1.7); }
 }
 
 @media (max-width: 980px) {

@@ -92,6 +92,25 @@
     });
   });
 
+  if (stage && !reduceMotion) {
+    stage.addEventListener(
+      "pointermove",
+      (event) => {
+        if (event.pointerType === "touch") return;
+        const bounds = stage.getBoundingClientRect();
+        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+        stage.style.setProperty("--stage-x", `${x * 22}px`);
+        stage.style.setProperty("--stage-y", `${y * 16}px`);
+      },
+      { passive: true },
+    );
+    stage.addEventListener("pointerleave", () => {
+      stage.style.setProperty("--stage-x", "0px");
+      stage.style.setProperty("--stage-y", "0px");
+    });
+  }
+
   document.querySelector("#year").textContent = String(new Date().getFullYear());
 
   const canvas = document.querySelector("#field");
