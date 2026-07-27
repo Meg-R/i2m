@@ -208,7 +208,8 @@
       pointer.y,
       320,
     );
-    gradient.addColorStop(0, "rgba(85,230,255,0.06)");
+    gradient.addColorStop(0, "rgba(105,238,255,0.16)");
+    gradient.addColorStop(0.42, "rgba(85,230,255,0.055)");
     gradient.addColorStop(1, "rgba(85,230,255,0)");
     context.fillStyle = gradient;
     context.fillRect(0, 0, width, height);
